@@ -1,0 +1,118 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Template method
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Template Method}
+
+\patroninfo{Comportamiento}{325}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+El proceso de publicación de un nuevo alojamiento en Airbnb sigue siempre
+los mismos pasos generales: validar los datos básicos, subir y verificar
+las fotografías, configurar el calendario de disponibilidad, definir el
+precio base y finalmente publicar el anuncio. Sin embargo, algunos pasos
+varían según el tipo de alojamiento: publicar una \emph{experiencia}
+requiere validar las credenciales del anfitrión-guía; publicar una
+\emph{propiedad de lujo} activa una revisión adicional por parte de
+un equipo especializado.
+
+Si cada tipo de alojamiento reimplementa el flujo completo de publicación,
+se duplica la lógica común y aumenta el riesgo de que los tipos difieran
+en pasos que deberían ser idénticos, como la verificación de fotografías
+o la publicación final.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Template Method define en la clase base
+\texttt{ProcesoPublicacion} el esqueleto del algoritmo de publicación
+como un método \texttt{publicar()} que llama en orden a los pasos del
+proceso. Los pasos invariantes —validación de datos, verificación de
+fotos, publicación final— se implementan directamente en la clase base;
+los pasos específicos de cada tipo se declaran como métodos abstractos
+que las subclases concretas (\texttt{PublicacionExperiencia},
+\texttt{PublicacionPropiedadLujo}) implementan a su manera.
+
+La secuencia global está protegida en un único lugar y no puede ser
+alterada por las subclases, garantizando consistencia. Solo los puntos
+de variación reales quedan abiertos a especialización, evitando la
+duplicación del esqueleto del proceso.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

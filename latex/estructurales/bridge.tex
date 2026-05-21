@@ -1,0 +1,126 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Bridge
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Bridge}
+
+\patroninfo{Estructural}{151}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+El panel de anfitriones de Airbnb permite exportar informes sobre el
+rendimiento de sus propiedades. Existen distintos \emph{tipos de informe}
+que un anfitrión puede solicitar: resumen de ingresos, estadísticas de
+ocupación e historial de reseñas. A su vez, cada informe puede
+descargarse en distintos \emph{formatos de salida}: PDF para archivar,
+CSV para importar en hojas de cálculo y JSON para integraciones con
+herramientas externas de gestión.
+
+Si se modela cada combinación como una clase independiente
+---\texttt{InformeIngresosPDF}, \texttt{InformeOcupacionCSV},
+\texttt{InformeResenasJSON}, etc.--- la jerarquía crece de forma
+combinatoria: tres tipos de informe por tres formatos producen nueve
+clases, y agregar un nuevo formato obliga a crear una nueva subclase
+por cada tipo de informe existente. La lógica de generación de datos
+queda duplicada entre clases que en esencia comparten el mismo proceso
+de recopilación, diferenciándose solo en cómo serializan el resultado.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Bridge separa la jerarquía de \emph{tipos de informe}
+---la abstracción--- de la jerarquía de \emph{formatos de exportación}
+---la implementación--- conectándolas mediante composición. La clase
+\texttt{InformeAnfitrion} contiene una referencia a un objeto
+\texttt{ExportadorFormato}; los tipos concretos de informe
+(\texttt{InformeIngresos}, \texttt{InformeOcupacion},
+\texttt{InformeResenas}) extienden la abstracción y se encargan de
+recopilar los datos propios de cada análisis, mientras que los
+exportadores concretos (\texttt{ExportadorPDF}, \texttt{ExportadorCSV},
+\texttt{ExportadorJSON}) implementan exclusivamente la serialización
+del resultado en su formato correspondiente.
+
+Ambas dimensiones evolucionan de forma completamente independiente:
+añadir un nuevo tipo de informe no requiere replicar la lógica de
+exportación, e incorporar un nuevo formato no impone cambios en ningún
+informe existente. El número total de clases crece linealmente en lugar
+de de forma combinatoria, y cada clase mantiene una única responsabilidad
+bien definida.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

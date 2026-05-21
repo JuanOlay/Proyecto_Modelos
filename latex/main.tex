@@ -1,0 +1,68 @@
+\documentclass[12pt, oneside]{book}
+
+\input{paquetes}
+\input{configuracion}
+
+\begin{document}
+
+% ─── Portada ─────────────────────────────────────────────────────────────────
+\input{portada}
+
+% ─── Tabla de contenidos ─────────────────────────────────────────────────────
+\tableofcontents
+\listoffigures
+\newpage
+
+% ─── Introducción ─────────────────────────────────────────────────────────────
+\input{introduccion}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+%  PARTE I — Patrones Creacionales
+% ═══════════════════════════════════════════════════════════════════════════════
+\part{Patrones Creacionales}
+
+\input{creacionales/abstract_factory}
+\input{creacionales/builder}
+\input{creacionales/factory_method}
+\input{creacionales/prototype}
+\input{creacionales/singleton}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+%  PARTE II — Patrones Estructurales
+% ═══════════════════════════════════════════════════════════════════════════════
+\part{Patrones Estructurales}
+
+\input{estructurales/adapter}
+\input{estructurales/bridge}
+\input{estructurales/composite}
+\input{estructurales/decorator}
+\input{estructurales/facade}
+\input{estructurales/flyweight}
+\input{estructurales/proxy}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+%  PARTE III — Patrones de Comportamiento
+% ═══════════════════════════════════════════════════════════════════════════════
+\part{Patrones de Comportamiento}
+
+\input{comportamiento/chain_of_responsibility}
+\input{comportamiento/command}
+\input{comportamiento/iterator}
+\input{comportamiento/mediator}
+\input{comportamiento/memento}
+\input{comportamiento/observer}
+\input{comportamiento/state}
+\input{comportamiento/strategy}
+\input{comportamiento/template_method}
+\input{comportamiento/visitor}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+%  Conclusiones Generales
+% ═══════════════════════════════════════════════════════════════════════════════
+\input{conclusiones}
+
+% ─── Bibliografía ─────────────────────────────────────────────────────────────
+\bibliographystyle{plain}
+\bibliography{referencias}
+
+\end{document}

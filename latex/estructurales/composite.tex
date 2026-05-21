@@ -1,0 +1,118 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Composite
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Composite}
+
+\patroninfo{Estructural}{163}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+Algunos anfitriones en Airbnb no gestionan una sola propiedad, sino
+complejos de alojamiento: un edificio que contiene varios apartamentos,
+cada uno con sus propias habitaciones y espacios comunes. La plataforma
+necesita calcular la capacidad total, el precio agregado y el listado
+de amenidades del conjunto completo, pero también de cada unidad por
+separado.
+
+Con un modelo plano, el código que consulta la capacidad de «una
+propiedad» debe saber si está ante una unidad individual o un complejo,
+y tratar cada caso de forma distinta. Esta distinción se repite en cada
+operación —cálculo de precio, listado de amenidades, verificación de
+disponibilidad— generando condicionales duplicados y haciendo el código
+frágil ante estructuras anidadas de mayor profundidad.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Composite trata los objetos individuales y los compuestos a
+través de la misma interfaz \texttt{ComponenteAlojamiento}, que declara
+operaciones como \texttt{getCapacidad()}, \texttt{getPrecio()} y
+\texttt{getAmenidades()}. Las unidades hoja (\texttt{Habitacion},
+\texttt{Apartamento}) implementan estas operaciones directamente; el
+objeto compuesto (\texttt{ComplejoAlojamiento}) las delega
+recursivamente a sus hijos y agrega los resultados.
+
+El código cliente invoca las mismas operaciones independientemente de
+si trata con una habitación, un apartamento o un complejo entero. La
+estructura jerárquica puede anidarse con cualquier profundidad sin que
+el código de consulta necesite cambiar, lo que refleja con naturalidad
+la realidad de los portafolios de propiedades de los anfitriones.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

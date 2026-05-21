@@ -1,0 +1,117 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Prototype
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Prototype}
+
+\patroninfo{Creacional}{117}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+Muchos anfitriones de Airbnb administran más de una propiedad y con
+frecuencia desean publicar alojamientos muy similares entre sí: dos
+apartamentos en el mismo edificio, o varias habitaciones privadas con
+las mismas reglas de la casa, los mismos precios base y las mismas
+amenidades. Actualmente, para registrar una segunda propiedad similar,
+el anfitrión debe rellenar manualmente todos los campos del formulario
+desde cero, repitiendo información que ya existe en la primera.
+
+Copiar los datos de una propiedad a mano es tedioso, propenso a
+inconsistencias y frustrante para el anfitrión. Una solución trivial
+como compartir la misma referencia de objeto entre dos propiedades es
+peligrosa: modificar una afectaría a la otra. Se necesita una copia
+independiente que pueda personalizarse sin riesgo.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Prototype dota a la clase \texttt{Propiedad} de un método
+\texttt{clonar()} que produce una copia profunda e independiente del
+objeto. El anfitrión selecciona una propiedad existente como plantilla
+y solicita duplicarla; el sistema crea un nuevo objeto con todos los
+atributos copiados —incluyendo las listas de amenidades y las reglas
+de la casa— sobre el cual el anfitrión solo necesita ajustar los campos
+que difieren, como el número de habitación o el título del anuncio.
+
+Esto agiliza considerablemente la publicación de propiedades similares,
+garantiza que la copia sea totalmente independiente del original y evita
+duplicar la lógica de inicialización. El anfitrión obtiene una base
+sólida sobre la que trabajar en lugar de un formulario vacío.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

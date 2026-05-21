@@ -1,0 +1,116 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Mediator
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Mediator}
+
+\patroninfo{Comportamiento}{273}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+El sistema de mensajería de Airbnb conecta a huéspedes y anfitriones
+dentro de la plataforma. Sin embargo, los mensajes no son simples textos:
+pueden activar acciones automáticas. Cuando el anfitrión responde una
+consulta de disponibilidad, el sistema debe verificar el calendario;
+cuando un huésped confirma verbalmente el check-in, el sistema puede
+actualizar el estado de la reserva; si alguna de las partes reporta
+un problema, se abre automáticamente un ticket de soporte.
+
+Si cada participante del chat —huésped, anfitrión, sistema de reservas,
+soporte— se comunica directamente con los demás, se crea una red densa
+de dependencias cruzadas. Añadir un nuevo tipo de participante
+o una nueva acción automática requiere modificar todas las partes que
+podrían interactuar con él.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Mediator introduce \texttt{CentralMensajeria} como el único
+punto de coordinación. Huéspedes, anfitriones y servicios automáticos
+solo se comunican con el mediador, nunca directamente entre sí. El
+mediador conoce las reglas de negocio: qué debe ocurrir cuando se
+envía cierto tipo de mensaje y qué participantes deben ser notificados
+o activados en consecuencia.
+
+Esto reduce las dependencias entre participantes de $O(n^2)$ a $O(n)$,
+hace explícitas y centralizadas las reglas de interacción, y permite
+incorporar nuevos participantes o nuevas reglas de automatización
+modificando únicamente el mediador.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

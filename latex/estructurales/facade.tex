@@ -1,0 +1,115 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Facade
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Facade}
+
+\patroninfo{Estructural}{185}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+El proceso de confirmar una reserva en Airbnb involucra internamente
+varios subsistemas independientes: el \emph{motor de disponibilidad}
+verifica que las fechas estén libres, el \emph{servicio de pagos}
+autoriza y retiene el importe, el \emph{servicio de notificaciones}
+avisa al anfitrión, el \emph{generador de contratos} produce el acuerdo
+de estancia y el \emph{sistema de calendario} bloquea las fechas.
+
+Cada subsistema expone su propia API con distintas convenciones.
+El código del cliente —la pantalla de confirmación de la aplicación móvil—
+debe conocer y orquestar todos estos sistemas en el orden correcto, lo
+que genera un acoplamiento elevado y hace que cualquier cambio en un
+subsistema repercuta directamente en la capa de presentación.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Facade introduce la clase \texttt{ServicioReserva}, que ofrece
+un único método \texttt{confirmarReserva()} de alto nivel. Internamente,
+esta fachada coordina la secuencia correcta de llamadas a los subsistemas:
+verifica disponibilidad, autoriza el pago, genera el contrato, bloquea
+las fechas y dispara las notificaciones.
+
+La capa de presentación solo conoce \texttt{ServicioReserva} y queda
+desacoplada de los detalles internos. Si el equipo de backend modifica
+el orden de los pasos o incorpora un nuevo subsistema —como un servicio
+de detección de fraude— solo es necesario actualizar la fachada, sin
+tocar la interfaz que consume el cliente.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

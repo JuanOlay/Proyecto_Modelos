@@ -1,0 +1,116 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Iterator
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Iterator}
+
+\patroninfo{Comportamiento}{257}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+Airbnb mantiene las propiedades disponibles en distintas estructuras
+de datos internas según el contexto: una lista ordenada por relevancia
+para los resultados de búsqueda, un árbol geoespacial para la vista
+de mapa y un grafo de recomendaciones para la sección «también te
+podría gustar». Los distintos módulos de la plataforma —exportación de
+datos, motor de recomendaciones, generador de reportes— necesitan
+recorrer estas colecciones de propiedades de forma uniforme, sin acoplarse
+a su estructura interna.
+
+Si cada módulo accede directamente a la representación interna de la
+colección, cualquier cambio en la estructura de datos obligaría a
+actualizar todos los módulos que la recorren, creando un acoplamiento
+innecesario y frágil.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Iterator define la interfaz \texttt{IteradorPropiedades} con
+los métodos \texttt{siguiente()} y \texttt{hayMas()}. Cada estructura
+de datos proporciona su propio iterador concreto que sabe cómo recorrerla
+sin exponer su representación interna. Los módulos clientes utilizan
+únicamente la interfaz del iterador y son agnósticos a si están
+traversando una lista, un árbol o un grafo.
+
+Cuando el equipo de backend decide cambiar la estructura interna de
+almacenamiento de propiedades, basta con actualizar el iterador
+correspondiente. El código de los módulos consumidores no sufre ningún
+cambio, manteniéndose el principio de encapsulamiento de las colecciones.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

@@ -1,0 +1,119 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Visitor
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Visitor}
+
+\patroninfo{Comportamiento}{331}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+El equipo de analítica de Airbnb necesita ejecutar distintos tipos de
+análisis sobre el catálogo de alojamientos: calcular el ingreso
+potencial máximo de cada propiedad, evaluar el índice de cumplimiento
+de estándares de calidad y generar un reporte fiscal con la información
+relevante para declaraciones tributarias en cada país. Cada análisis
+opera sobre los mismos objetos del dominio —\texttt{Habitacion},
+\texttt{Apartamento}, \texttt{CasaRural}— pero extrae y procesa datos
+distintos.
+
+Añadir la lógica de cada análisis directamente a las clases del dominio
+las contamina con responsabilidades que no le corresponden. Cada vez que
+el equipo de analítica requiere un nuevo tipo de informe, hay que modificar
+todas las clases de alojamiento, rompiendo el principio de
+responsabilidad única y arriesgando errores en el núcleo del modelo de
+dominio.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Visitor separa los algoritmos de análisis de las clases sobre
+las que operan. Cada clase de alojamiento implementa un método
+\texttt{aceptar(visitante)} que simplemente invoca el método correspondiente
+del visitante. Cada análisis se implementa como un visitante concreto
+—\texttt{VisitanteIngresoMaximo}, \texttt{VisitanteCalidad},
+\texttt{VisitanteFiscal}— con métodos específicos para cada tipo de
+alojamiento.
+
+Las clases del dominio no necesitan cambiar cuando se requiere un nuevo
+análisis; basta con crear un nuevo visitante. Cada visitante encapsula
+de forma cohesiva toda la lógica de su análisis particular, y la
+estructura del modelo de dominio permanece limpia y estable.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

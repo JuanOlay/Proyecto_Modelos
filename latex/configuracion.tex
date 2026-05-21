@@ -1,0 +1,85 @@
+% ─────────────────────────────────────────────────────────────────────────────
+%  configuracion.tex  —  Optimizado
+% ─────────────────────────────────────────────────────────────────────────────
+
+% --- Interlineado ------------------------------------------------------------
+\usepackage{setspace}
+\onehalfspacing
+
+% --- Sangría -----------------------------------------------------------------
+\setlength{\parindent}{0.5cm}
+\setlength{\parskip}{6pt}
+
+% --- Encabezados -------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{\small\textit{Patrones de Diseño — Airbnb}}
+\fancyhead[R]{\small\leftmark}
+
+\fancyfoot[C]{\thepage}
+
+\renewcommand{\headrulewidth}{0.4pt}
+
+% --- Estilo de código --------------------------------------------------------
+\lstset{
+  basicstyle       = \ttfamily\small,
+  keywordstyle     = \color{NavyBlue}\bfseries,
+  commentstyle     = \color{gray}\itshape,
+  stringstyle      = \color{Maroon},
+  numbers          = left,
+  numberstyle      = \tiny\color{gray},
+  numbersep        = 8pt,
+  breaklines       = true,
+  frame            = single,
+  framerule        = 0.5pt,
+  rulecolor        = \color{gray!40},
+  backgroundcolor  = \color{gray!5},
+  showstringspaces = false,
+  tabsize          = 4,
+  captionpos       = b
+}
+
+% --- Títulos -----------------------------------------------------------------
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]
+  {\normalfont\Large\bfseries\color{NavyBlue}}
+  {\chaptertitlename\ \thechapter}
+  {10pt}
+  {\Huge}
+
+\titleformat{\section}
+  {\normalfont\large\bfseries\color{NavyBlue!80}}
+  {\thesection}
+  {1em}
+  {}
+
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries\color{NavyBlue!60}}
+  {\thesubsection}
+  {1em}
+  {}
+
+% --- Captions ----------------------------------------------------------------
+\captionsetup{
+  font      = small,
+  labelfont = {bf,color=NavyBlue},
+  labelsep  = period
+}
+
+% --- Numeración continua de figuras ------------------------------------------
+% Descomentar solo si lo necesitas
+%
+% \counterwithout{figure}{chapter}
+
+% --- Macro reutilizable ------------------------------------------------------
+\newcommand{\patroninfo}[2]{%
+  \vspace{4pt}
+  \noindent
+  \begin{tabular}{@{}ll}
+    \textbf{Tipo:}       & #1 \\
+    \textbf{GoF (pág.):} & #2 \\
+  \end{tabular}
+  \vspace{6pt}
+}

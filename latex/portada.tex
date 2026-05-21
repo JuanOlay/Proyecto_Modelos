@@ -1,0 +1,50 @@
+% ─────────────────────────────────────────────────────────────────────────────
+%  portada.tex  —  Página de presentación del documento
+% ─────────────────────────────────────────────────────────────────────────────
+
+\begin{titlepage}
+  \centering
+
+  % ── Logo de la universidad ──────────────────────────────────────────────────
+  
+  \includegraphics[width=0.30\textwidth]{img/logo_universidad}\\[0.8cm]
+
+  % ── Nombre de la universidad ────────────────────────────────────────────────
+  {\Large \textbf{Universidad Distrital Francisco Jose De Caldas}\\[0.2cm]}
+  {\large Facultad de Ingeniería\\[0.1cm]}
+  {\large Ingeniería de Sistemas \\[1.5cm]}
+
+  % ── Línea decorativa ────────────────────────────────────────────────────────
+  \rule{\linewidth}{1.5pt}\\[0.4cm]
+
+  % ── Título del trabajo ──────────────────────────────────────────────────────
+  {\Huge \textbf{Patrones de Diseño de Software}\\[0.3cm]}
+  {\Large \textit{aplicados al contexto de Airbnb}\\[0.3cm]}
+
+  \rule{\linewidth}{1.5pt}\\[1.2cm]
+
+  % ── Materia ─────────────────────────────────────────────────────────────────
+  {\large \textbf{Materia:} Modelos de Programación\\[0.4cm]}
+
+  % ── Autores ─────────────────────────────────────────────────────────────────
+  \begin{tabular}{ll}
+    \textbf{Estudiante 1:} & Juan Felipe Guevara Olaya \quad \texttt{Código: 20231020117} \\[0.2cm]
+    \textbf{Estudiante 2:} & Nombre Apellido \quad \texttt{Código: XXXXXXX} \\[0.2cm]
+  \end{tabular}\\[1.2cm]
+
+  % ── Docente ─────────────────────────────────────────────────────────────────
+  {\large \textbf{Docente:} Baron\\[1.5cm]}
+
+  % ── Fecha ───────────────────────────────────────────────────────────────────
+  {\large \today}
+
+  \vfill
+
+  % ── Ciudad y año ────────────────────────────────────────────────────────────
+  {\normalsize Bogota, Colombia — 2025}
+
+\end{titlepage}
+
+% Reinicia la numeración de páginas después de la portada
+\setcounter{page}{1}
+\pagenumbering{roman}       % i, ii, iii... para TOC e introducción

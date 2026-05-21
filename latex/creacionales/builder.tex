@@ -1,0 +1,121 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Builder
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Builder}
+
+\patroninfo{Creacional}{97}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+\section{Situación Problema}
+
+El motor de búsqueda de Airbnb permite al usuario aplicar una gran
+cantidad de filtros antes de explorar propiedades: destino, rango de
+fechas, número de huéspedes, precio mínimo y máximo, tipo de alojamiento,
+amenidades requeridas, política de cancelación y puntuación mínima, entre
+otros. No todos los filtros son obligatorios; de hecho, la mayoría de las
+búsquedas utilizan solo un subconjunto de ellos.
+
+Intentar representar todas las combinaciones posibles mediante constructores
+sobrecargados resulta inviable: con diez parámetros opcionales se
+producen decenas de firmas distintas, muchas de ellas ambiguas cuando
+varios parámetros son del mismo tipo. Pasar \texttt{null} para los campos
+no utilizados es una práctica propensa a errores y difícil de leer.
+Además, la consulta resultante debe poder validarse como un todo coherente
+antes de ejecutarse.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Builder separa la construcción del objeto \texttt{ConsultaBusqueda}
+de su representación final. Un objeto \texttt{BusquedaBuilder} expone
+métodos encadenables —\texttt{conDestino()}, \texttt{conFechas()},
+\texttt{conPrecioMaximo()}, \texttt{conAmenidades()}— que van acumulando
+los criterios seleccionados por el usuario. Al final, el método
+\texttt{construir()} valida que los criterios sean coherentes y devuelve
+un objeto \texttt{ConsultaBusqueda} completamente configurado.
+
+Esto elimina los constructores con largas listas de parámetros nulos,
+hace el código de construcción legible y autodescriptivo, y centraliza
+las reglas de validación en un único lugar. Si en el futuro se añaden
+nuevos filtros, solo es necesario agregar el método correspondiente al
+builder sin afectar al resto del sistema.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

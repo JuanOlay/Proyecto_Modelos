@@ -1,0 +1,116 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Strategy
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Strategy}
+
+\patroninfo{Comportamiento}{315}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+Airbnb aplica precios dinámicos a sus propiedades: el precio por noche
+varía según el algoritmo de tarificación configurado por el anfitrión.
+Algunos anfitriones optan por \emph{precios estacionales} —sube en
+verano y festivos—, otros por \emph{precios basados en demanda} —ajuste
+automático según ocupación en el área— y otros por \emph{descuentos por
+estancia prolongada} —reducción progresiva para reservas de más de siete
+noches—.
+
+Si toda esta lógica reside en la clase \texttt{Propiedad} mediante una
+cadena de condicionales, agregar una nueva estrategia de precios implica
+modificar esa clase y el riesgo de que cambios en una estrategia afecten
+accidentalmente a las otras. Además, los anfitriones pueden querer cambiar
+su estrategia de precios en cualquier momento sin afectar la disponibilidad
+de la propiedad.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Strategy extrae cada algoritmo de tarificación a una clase
+independiente que implementa la interfaz \texttt{EstrategiaPrecios} con
+el método \texttt{calcularPrecio()}. La clase \texttt{Propiedad} mantiene
+una referencia a la estrategia activa y la delega para calcular el precio
+de cualquier noche consultada.
+
+El anfitrión puede cambiar su estrategia en tiempo de ejecución sin más
+que sustituir el objeto de estrategia. Cada algoritmo queda aislado,
+es probable de forma independiente y puede incorporarse una nueva
+estrategia sin modificar \texttt{Propiedad} ni las estrategias existentes.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

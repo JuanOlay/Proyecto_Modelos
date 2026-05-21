@@ -1,0 +1,121 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Proxy
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Proxy}
+
+\patroninfo{Estructural}{207}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+Airbnb almacena información sensible de los anfitriones: número de
+teléfono personal, dirección exacta del inmueble y datos de contacto
+directo. Esta información solo debe ser accesible para el huésped una
+vez que su reserva ha sido \emph{confirmada y pagada}; hasta ese momento,
+la ficha de la propiedad muestra únicamente datos aproximados ---el
+barrio y la ciudad, pero nunca la dirección exacta ni el teléfono real---.
+
+El problema no es solo de permisos: el módulo que renderiza la ficha
+de una propiedad no debería tener que conocer las reglas de negocio
+que determinan qué información mostrar según el estado de la reserva.
+Si esa lógica recae en la capa de presentación, se repite en cada punto
+donde se muestran datos del anfitrión, es fácil de omitir y mezcla
+responsabilidades de visualización con decisiones de acceso.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Proxy introduce \texttt{ProxyPerfilAnfitrion}, que implementa
+exactamente la misma interfaz \texttt{PerfilAnfitrion} que el objeto
+real. El módulo de presentación solo conoce esa interfaz y solicita
+los datos sin ninguna condición adicional. Internamente, el proxy
+intercepta cada solicitud, consulta el estado de la reserva y decide
+de forma autónoma qué devolver: si la reserva está confirmada, delega
+al objeto real y retorna los datos completos; en caso contrario, retorna
+una versión censurada donde el teléfono aparece enmascarado y la
+dirección se reduce al nombre del barrio.
+
+El cliente recibe siempre una respuesta a través de la misma interfaz
+y en ningún momento toma ni conoce la decisión de qué versión de los
+datos está viendo. Toda la política de acceso reside exclusivamente en
+el proxy, lo que garantiza que no pueda ser ignorada por descuido,
+centraliza su mantenimiento en un único lugar y deja al servicio real
+completamente libre de lógica de autorización.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

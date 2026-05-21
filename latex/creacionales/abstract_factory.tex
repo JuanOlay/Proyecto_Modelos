@@ -1,0 +1,141 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Abstract Factory
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Abstract Factory}
+
+\patroninfo{Creacional}{87}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+Airbnb opera en tres superficies distintas: aplicación web, aplicación
+iOS y aplicación Android. Cada superficie tiene sus propios estándares
+visuales: los botones, tarjetas de propiedad y formularios de reserva
+difieren en apariencia y comportamiento entre plataformas, pero siempre
+deben mantenerse visualmente coherentes \emph{dentro} de la misma
+plataforma.
+
+El equipo de frontend se encontró con que el código de composición de
+pantallas mezclaba condicionales de plataforma con la lógica de negocio.
+Crear un componente de tarjeta de propiedad para web y luego reutilizar
+ese mismo constructor en la app de iOS producía inconsistencias visuales.
+El problema se agravaba cada vez que se quería incorporar una nueva
+plataforma: había que rastrear todos los puntos del código donde se
+instanciaban componentes y añadir una nueva rama condicional.
+
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Abstract Factory define una interfaz \texttt{FabricaUI} con
+métodos para crear cada familia de componentes (\texttt{crearBoton()},
+\texttt{crearTarjetaPropiedad()}, \texttt{crearFormularioReserva()}).
+Las fábricas concretas \texttt{FabricaWeb}, \texttt{FabricaIOS} y
+\texttt{FabricaAndroid} implementan esa interfaz produciendo componentes
+coherentes con su plataforma.
+
+El código de composición de pantallas trabaja únicamente contra
+\texttt{FabricaUI}; en tiempo de ejecución se inyecta la fábrica
+correspondiente a la plataforma activa. Esto garantiza que los componentes
+de una misma familia siempre sean compatibles entre sí, elimina los
+condicionales de plataforma dispersos por el código y permite incorporar
+nuevas superficies simplemente añadiendo una nueva fábrica concreta.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=Ejemplo de clase Java]
+public class Usuario {
+
+    private String nombre;
+    private int edad;
+
+    public Usuario(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    public void mostrarInformacion() {
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Edad: " + edad);
+    }
+
+    public static void main(String[] args) {
+
+        Usuario usuario = new Usuario("Carlos", 25);
+
+        usuario.mostrarInformacion();
+    }
+}
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

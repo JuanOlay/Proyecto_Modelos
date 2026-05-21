@@ -1,0 +1,117 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Factory Method
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Factory Method}
+
+\patroninfo{Creacional}{107}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+Airbnb necesita enviar notificaciones a sus usuarios ante distintos
+eventos: una reserva confirmada, un mensaje de un anfitrión, un recordatorio
+de check-in o una alerta de pago pendiente. Dependiendo de las preferencias
+del usuario y del tipo de evento, la notificación puede enviarse por correo
+electrónico, mensaje push en la aplicación móvil o SMS.
+
+El módulo de eventos actualmente contiene bloques \texttt{if-else} que
+deciden qué objeto de notificación instanciar. Cada vez que se incorpora
+un nuevo canal —por ejemplo, notificaciones en WhatsApp— es necesario
+modificar ese módulo central, rompiéndose el principio de abierto/cerrado
+y aumentando el riesgo de introducir errores en la lógica ya probada.
+Además, el módulo de eventos no debería tener que conocer los detalles
+de construcción de cada tipo de notificación.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Factory Method delega la responsabilidad de crear el objeto
+de notificación a subclases especializadas. Se define una clase base
+\texttt{NotificadorEvento} con un método fábrica abstracto que devuelve
+un objeto de tipo \texttt{Notificacion}; cada subclase concreta
+(\texttt{NotificadorEmail}, \texttt{NotificadorPush}, \texttt{NotificadorSMS})
+implementa ese método y determina qué objeto instanciar.
+
+El módulo de eventos trabaja exclusivamente con la interfaz abstracta y
+nunca sabe qué tipo concreto está usando. Cuando se requiere un nuevo
+canal de comunicación, basta con añadir una nueva subclase sin tocar el
+código existente. Esto hace que el sistema sea extensible, más fácil de
+probar y libre de la proliferación de condicionales en el núcleo del negocio.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

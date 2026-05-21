@@ -1,0 +1,116 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — State
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{State}
+
+\patroninfo{Comportamiento}{305}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+Una reserva en Airbnb atraviesa varios estados a lo largo de su ciclo
+de vida: \emph{solicitada}, \emph{confirmada}, \emph{en curso},
+\emph{completada} y \emph{cancelada}. El comportamiento permitido varía
+drásticamente según el estado: una reserva solicitada puede ser rechazada
+por el anfitrión, pero una completada no; se puede cancelar una reserva
+confirmada, pero con penalizaciones distintas según la antelación; no
+es posible dejar reseña hasta que la reserva esté completada.
+
+Implementar estas reglas con condicionales sobre un atributo de estado
+produce un código lleno de \texttt{if-else} anidados que crece con cada
+nuevo estado o transición. El riesgo de omitir una combinación inválida
+es alto, y el código resulta difícil de leer y extender.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón State representa cada estado del ciclo de vida como una clase
+concreta que implementa la interfaz \texttt{EstadoReserva}. La clase
+\texttt{Reserva} delega la respuesta a cada acción —\texttt{confirmar()},
+\texttt{cancelar()}, \texttt{completar()}, \texttt{dejarResena()}— al
+objeto de estado que tiene asignado en ese momento. Cada estado concreto
+sabe exactamente qué transiciones son válidas, qué lógica ejecutar y a
+qué estado siguiente moverse.
+
+El código de cada estado es compacto y autocontenido. Añadir un nuevo
+estado o modificar las reglas de transición de uno existente no requiere
+alterar los demás. La clase \texttt{Reserva} queda libre de condicionales
+y concentrada en su responsabilidad principal.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

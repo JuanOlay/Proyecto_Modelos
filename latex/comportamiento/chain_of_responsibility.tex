@@ -1,0 +1,126 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Chain of Responsibility
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Chain Of Responsibility}
+
+\patroninfo{Comportamiento}{223}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+Cuando un anfitrión publica un nuevo alojamiento en Airbnb, la plataforma
+debe verificar que el anuncio cumple con una serie de requisitos antes
+de hacerlo visible al público. Estos requisitos son heterogéneos: algunos
+son puramente técnicos ---las fotografías deben superar un umbral mínimo
+de resolución y cantidad---, otros son de contenido ---la descripción
+no puede contener información de contacto directo que eluda la
+intermediación de la plataforma---, otros son de coherencia de negocio
+---el precio base no puede ser anómalamente inferior al promedio de la
+zona, lo que podría indicar un error del anfitrión--- y otros son de
+cumplimiento legal ---ciertas ciudades exigen un número de licencia
+turística válido antes de permitir la publicación---.
+
+Ejecutar todas estas verificaciones en un único componente mezcla
+responsabilidades de naturaleza completamente distinta: lógica de
+procesamiento de imágenes, análisis de texto, comparación de precios
+de mercado y consulta de registros regulatorios conviven en el mismo
+lugar. Cualquier cambio en la normativa de una ciudad concreta, o la
+incorporación de un nuevo criterio de calidad, obliga a intervenir ese
+componente central con el riesgo de afectar verificaciones que no tenían
+relación con el cambio.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Chain of Responsibility organiza cada verificación como un
+manejador independiente: \texttt{VerificadorFotos},
+\texttt{VerificadorContenidoDescripcion}, \texttt{VerificadorCoherenciaPrecio}
+y \texttt{VerificadorLicenciaTuristica}. Cada manejador tiene una
+responsabilidad acotada: evalúa el aspecto del anuncio que le corresponde
+y, si detecta un incumplimiento, detiene la cadena y devuelve al
+anfitrión un motivo de rechazo claro y específico. Si el anuncio supera
+su verificación, lo pasa al siguiente manejador sin intervención adicional.
+
+Solo cuando el anuncio recorre la cadena completa sin ser detenido se
+procede a su publicación. Cada verificador es completamente ajeno a
+los criterios de los demás, por lo que modificar el umbral de calidad
+fotográfica no tiene ningún efecto sobre la verificación de licencias.
+Incorporar una nueva exigencia ---por ejemplo, un detector de precios
+discriminatorios--- se reduce a insertar un nuevo manejador en la cadena
+en el punto que corresponda, sin tocar ninguno de los existentes.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/chain_responsibility_diagrama.png}
+    \caption{Diagrama de clases del patrón Chain of Responsibility}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{Handler:}
+    \item \textbf{ConcreteHandler:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=Main]
+ //Codigo del main
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[caption=Salida]
+ // Salida esperada
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

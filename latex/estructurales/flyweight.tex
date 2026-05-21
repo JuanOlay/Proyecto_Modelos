@@ -1,0 +1,119 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Flyweight
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Flyweight}
+
+\patroninfo{Estructural}{195}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+La plataforma de Airbnb almacena en memoria cientos de miles de objetos
+\texttt{Propiedad} para servir búsquedas en tiempo real. Cada propiedad
+puede declarar hasta cincuenta amenidades: Wi-Fi, piscina, cocina
+equipada, aire acondicionado, estacionamiento, etc. Si cada objeto
+\texttt{Propiedad} almacenara su propia instancia de cada amenidad —con
+su nombre, icono, descripción y categoría— la memoria consumida se
+multiplicaría de forma innecesaria, dado que la inmensa mayoría de
+propiedades comparte exactamente las mismas amenidades con los mismos
+datos descriptivos.
+
+El problema se hace crítico cuando el motor de búsqueda carga en caché
+los resultados para miles de usuarios concurrentes: el consumo de memoria
+se dispara con objetos masivamente duplicados que son, en esencia,
+idénticos.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Flyweight separa el estado \emph{intrínseco} de una amenidad
+—nombre, descripción, icono, categoría, que son inmutables y compartibles—
+del estado \emph{extrínseco} —si una propiedad concreta la ofrece o no—.
+Una \texttt{FabricaAmenidades} mantiene un mapa de objetos
+\texttt{Amenidad} ya creados; cuando una propiedad declara que ofrece
+Wi-Fi, recibe la misma instancia compartida que ya usan otras miles de
+propiedades.
+
+El resultado es una reducción drástica en el número de objetos en memoria:
+en lugar de crear millones de instancias de \texttt{Amenidad} duplicadas,
+el sistema reutiliza un conjunto acotado de objetos compartidos. Cada
+propiedad solo guarda referencias a las amenidades relevantes, no copias
+de sus datos.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

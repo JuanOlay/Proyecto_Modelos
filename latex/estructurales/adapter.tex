@@ -1,0 +1,117 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Adapter
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Adapter}
+
+\patroninfo{Estructural}{139}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+Airbnb integra pasarelas de pago de terceros —Stripe, PayPal y
+Mercado Pago— para procesar los cobros a los huéspedes. Cada pasarela
+expone su propia interfaz de programación: Stripe utiliza un método
+\texttt{charge()}, PayPal emplea \texttt{executePayment()} y Mercado
+Pago trabaja con \texttt{createPaymentIntent()}, todos con firmas,
+parámetros y formatos de respuesta distintos.
+
+El servicio de pagos interno de Airbnb no puede —ni debería— adaptarse
+a la interfaz de cada proveedor. Si en el futuro se incorpora una nueva
+pasarela, habría que modificar el servicio central para entender su
+vocabulario, acoplando el núcleo del negocio a detalles de implementación
+externos y fragilizando el sistema.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Adapter introduce una interfaz unificada \texttt{PasarelaPago}
+con un único método \texttt{procesarPago()}. Para cada proveedor externo
+se crea un adaptador concreto —\texttt{AdaptadorStripe},
+\texttt{AdaptadorPayPal}, \texttt{AdaptadorMercadoPago}— que implementa
+esa interfaz y traduce internamente la llamada al método nativo de cada
+SDK.
+
+El servicio de pagos de Airbnb trabaja exclusivamente contra
+\texttt{PasarelaPago} y desconoce por completo las particularidades de
+cada proveedor. Añadir una nueva pasarela equivale únicamente a crear
+un nuevo adaptador, sin tocar el código de negocio. Esto también
+facilita las pruebas unitarias, pues basta con sustituir el adaptador
+real por uno simulado.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

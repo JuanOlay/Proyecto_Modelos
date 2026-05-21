@@ -1,0 +1,116 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — MEmento
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Memento}
+
+\patroninfo{Comportamiento}{283}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+Cuando un usuario de Airbnb configura una búsqueda con múltiples filtros
+—destino, fechas, tipo de alojamiento, amenidades— y luego navega hacia
+la ficha de una propiedad, al presionar el botón «atrás» espera que su
+búsqueda esté exactamente como la dejó: los mismos filtros activos, el
+mismo punto de desplazamiento en la lista de resultados y la misma vista
+seleccionada (mapa o lista). Esto mismo aplica cuando el usuario
+interrumpe una reserva a mitad del proceso multistep y regresa más tarde.
+
+Restablecer el estado de la búsqueda requiere conservar todos sus
+atributos en un momento específico. Exponer el estado interno del objeto
+\texttt{BusquedaActiva} para que capas externas lo almacenen viola el
+encapsulamiento y acopla el mecanismo de almacenamiento a los detalles
+internos del objeto.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Memento permite que \texttt{BusquedaActiva} produzca un objeto
+\texttt{InstantaneaBusqueda} que captura su estado interno completo sin
+exponerlo al exterior. El \texttt{GestorNavegacion} almacena estas
+instantáneas en una pila; cuando el usuario regresa, solicita la
+instantánea correspondiente y \texttt{BusquedaActiva} se restaura al
+estado guardado.
+
+El encapsulamiento del objeto de búsqueda se mantiene intacto —el
+gestor maneja instantáneas opacas—, y la experiencia del usuario es
+fluida al retomar exactamente donde lo dejó, independientemente de cuántos
+pasos de navegación hayan ocurrido en el intermedio.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

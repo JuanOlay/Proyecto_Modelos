@@ -1,0 +1,118 @@
+% ═══════════════════════════════════════════════════════════════════════════════
+%  CAPÍTULO — Decorator
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Decorator}
+
+\patroninfo{Estructural}{175}
+
+% ─── Situación Problema ──────────────────────────────────────────────────────
+\section{Situación Problema}
+
+Al confirmar una reserva en Airbnb, los huéspedes pueden contratar
+servicios adicionales opcionales: seguro de viaje, traslado al aeropuerto,
+kit de bienvenida o servicio de limpieza intermedio. Cada combinación
+de servicios afecta al precio final y a la descripción del paquete
+reservado.
+
+Modelar todas las combinaciones posibles mediante subclases llevaría
+a una explosión combinatoria: \texttt{ReservaConSeguro},
+\texttt{ReservaConSeguroYTraslado}, \texttt{ReservaConTodosLosServicios},
+etc. Con solo cuatro servicios opcionales existen dieciséis combinaciones
+posibles. Incorporar un quinto duplicaría ese número y requeriría
+modificar la jerarquía de clases cada vez que se añada un servicio nuevo.
+
+% ─── Solución ────────────────────────────────────────────────────────────────
+\section{Solución}
+
+El patrón Decorator envuelve el objeto \texttt{Reserva} base con
+decoradores concretos: \texttt{DecoradorSeguro},
+\texttt{DecoradorTraslado}, \texttt{DecoradorKitBienvenida}. Cada
+decorador implementa la misma interfaz que \texttt{Reserva}, delega
+las operaciones al objeto que envuelve y añade su propio comportamiento
+—incrementar el precio, ampliar la descripción— sin modificar la reserva
+base ni los demás decoradores.
+
+Los servicios se pueden combinar libremente en tiempo de ejecución
+apilando decoradores en cualquier orden. El código que procesa la
+reserva no necesita saber cuántos ni cuáles servicios adicionales se
+han contratado; simplemente invoca las operaciones sobre la interfaz
+común. Añadir un nuevo servicio es tan sencillo como crear un nuevo
+decorador.
+
+% ─── Diagrama de clases ─────────────────────────────────────────────────────
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/abstract_factory_diagrama.png}
+    \caption{Diagrama de clases del patrón Abstract Factory}
+\end{figure}
+
+
+% ─── Roles de las Clases ────────────────────────────────────────────────────
+\section{Roles de las Clases}
+
+% Explicar la responsabilidad de cada clase/interfaz
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}
+    \item \textbf{ConcreteFactory:}
+    \item \textbf{AbstractProduct:}
+    \item \textbf{ConcreteProduct:}
+    \item \textbf{Client:}
+\end{itemize}
+
+
+% ─── Main ───────────────────────────────────────────────────────────────────
+\section{Main}
+
+% Explicar qué realiza el programa principal
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Salida del Main ────────────────────────────────────────────────────────
+\section{Salida del Main}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clases ─────────────────────────────────────────────────────────────────
+\section{Clases}
+
+% ─── Clase 1 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 2 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Clase 3 ────────────────────────────────────────────────────────────────
+\subsection{NombreClase}
+
+\begin{lstlisting}[language=Java, caption=NombreClase]
+ 
+\end{lstlisting}
+
+
+% ─── Conclusiones ───────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+% Explicar:
+% - Ventajas del patrón
+% - Cuándo usarlo
+% - Beneficios obtenidos
+% - Posibles desventajas
+% - Relación con principios SOLID

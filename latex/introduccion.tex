@@ -1,0 +1,77 @@
+% ─────────────────────────────────────────────────────────────────────────────
+%  introduccion.tex  —  Introducción general del documento
+% ─────────────────────────────────────────────────────────────────────────────
+
+\chapter*{Introducción}
+\addcontentsline{toc}{chapter}{Introducción}  % aparece en TOC aunque sea sin número
+\markboth{Introducción}{Introducción}
+
+% Cambiar numeración a arábiga a partir de aquí
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+El desarrollo de software moderno se enfrenta continuamente a desafíos de diseño que,
+aunque varían en dominio y escala, comparten una naturaleza estructural recurrente.
+Para responder a estos desafíos de manera sistemática y reutilizable, la comunidad de
+ingeniería de software adoptó el concepto de \textbf{patrones de diseño}, popularizado
+por Gamma, Helm, Johnson y Vlissides en su obra clásica \textit{Design Patterns: Elements
+of Reusable Object-Oriented Software} (1994) \cite{GoF1994}, conocida coloquialmente como
+\textit{«el libro de la Banda de los Cuatro» (GoF)}.
+
+Un patrón de diseño es una \emph{solución general y reutilizable} a un problema
+recurrente dentro de un contexto determinado. No se trata de código listo para
+copiar y pegar, sino de una plantilla o esquema conceptual que debe adaptarse a
+cada situación concreta. Cada patrón describe el problema que resuelve, la solución
+abstracta y sus consecuencias, facilitando así la comunicación entre desarrolladores
+y la toma de decisiones arquitectónicas.
+
+\section*{Contexto de aplicación: Airbnb}
+
+A lo largo de este documento, los 23~patrones del catálogo GoF se analizan y aplican
+al ecosistema de \textbf{Airbnb}, una de las plataformas de alojamiento entre pares
+(\textit{peer-to-peer}) más grandes del mundo. Airbnb conecta a \emph{anfitriones}
+que ofrecen espacios habitacionales con \emph{huéspedes} que buscan alojamiento
+temporal, gestionando además pagos, reseñas, búsquedas geoespaciales, notificaciones
+y políticas de cancelación, entre otros servicios.
+
+Esta plataforma resulta un escenario idóneo para el estudio de patrones de diseño
+porque presenta problemáticas reales y complejas:
+
+\begin{itemize}[leftmargin=1.5cm]
+  \item \textbf{Creación dinámica de objetos:} distintos tipos de alojamiento
+        (apartamento, cabaña, habitación privada, etc.) con atributos y reglas
+        de negocio propios.
+  \item \textbf{Integración con servicios externos:} pasarelas de pago, proveedores
+        de mapas, sistemas de correo y notificaciones push.
+  \item \textbf{Gestión del estado:} reservas que transitan por estados como
+        \textit{pendiente}, \textit{confirmada}, \textit{activa} y \textit{finalizada}.
+  \item \textbf{Escalabilidad y rendimiento:} millones de listados simultáneos que
+        exigen estructuras de datos eficientes y acceso controlado a recursos.
+  \item \textbf{Comportamiento flexible:} algoritmos de búsqueda, filtrado y
+        recomendación que varían según preferencias del usuario.
+\end{itemize}
+
+\section*{Organización del documento}
+
+Los patrones se presentan agrupados en las tres categorías canónicas del GoF:
+
+\begin{enumerate}[leftmargin=1.5cm]
+  \item \textbf{Patrones Creacionales} (5 patrones): abordan la forma en que se
+        crean los objetos, desacoplando el código cliente de las clases concretas
+        que instancia.
+  \item \textbf{Patrones Estructurales} (7 patrones): describen cómo se componen
+        clases y objetos para formar estructuras más grandes y flexibles.
+  \item \textbf{Patrones de Comportamiento} (10 patrones): se ocupan de los
+        algoritmos y la asignación de responsabilidades entre objetos.
+\end{enumerate}
+
+Dentro de cada categoría los patrones se presentan en orden alfabético. Para cada uno
+se incluye: la situación-problema en el contexto de Airbnb, el diagrama de clases UML,
+la descripción de roles, un \textit{main} de ejemplo con su salida esperada, el código
+fuente de las clases y las conclusiones particulares del patrón.
+
+\bigskip
+
+Se espera que al finalizar la lectura el estudiante comprenda no solo la mecánica
+técnica de cada patrón, sino también su pertinencia y valor dentro de sistemas
+reales de mediana y gran escala.
