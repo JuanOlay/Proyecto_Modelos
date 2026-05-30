@@ -8,7 +8,8 @@ public class VerificadorLicenciaTuristica extends Verificador {
 
         if (licencia == null || licencia.isBlank()) {
             return new ResultadoVerificacion(false,
-                    "Se requiere un numero de licencia turistica valido para publicar en esta ciudad.");
+                    "Se requiere un numero de licencia turistica valido para "
+                    + "publicar en esta ciudad.");
         }
 
         return continuarCadena(anuncio);

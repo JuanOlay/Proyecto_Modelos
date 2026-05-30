@@ -1,0 +1,125 @@
+// Abstract Products
+
+interface Boton {
+    String render();
+}
+
+interface TarjetaPropiedad {
+    String render();
+}
+
+interface FormularioReserva {
+    String render();
+}
+
+// Abstract Factory
+
+interface FabricaUI {
+    Boton crearBoton();
+    TarjetaPropiedad crearTarjetaPropiedad();
+    FormularioReserva crearFormularioReserva();
+}
+
+// Concrete Products
+
+class BotonWeb implements Boton {
+    public String render() { return "Boton Web"; }
+}
+class TarjetaWeb implements TarjetaPropiedad {
+    public String render() { return "Tarjeta Web"; }
+}
+class FormularioWeb implements FormularioReserva {
+    public String render() { return "Formulario Web"; }
+}
+
+class BotonIOS implements Boton {
+    public String render() { return "Boton iOS"; }
+}
+class TarjetaIOS implements TarjetaPropiedad {
+    public String render() { return "Tarjeta iOS"; }
+}
+class FormularioIOS implements FormularioReserva {
+    public String render() { return "Formulario iOS"; }
+}
+
+class BotonAndroid implements Boton {
+    public String render() { return "Boton Android"; }
+}
+class TarjetaAndroid implements TarjetaPropiedad {
+    public String render() { return "Tarjeta Android"; }
+}
+class FormularioAndroid implements FormularioReserva {
+    public String render() { return "Formulario Android"; }
+}
+
+// Concrete Factory
+
+class FabricaWeb implements FabricaUI {
+    public Boton crearBoton() { return new BotonWeb(); }
+    public TarjetaPropiedad crearTarjetaPropiedad() { return new TarjetaWeb(); }
+    public FormularioReserva crearFormularioReserva() { return new FormularioWeb(); }
+}
+
+class FabricaIOS implements FabricaUI {
+    public Boton crearBoton() { return new BotonIOS(); }
+    public TarjetaPropiedad crearTarjetaPropiedad() { return new TarjetaIOS(); }
+    public FormularioReserva crearFormularioReserva() { return new FormularioIOS(); }
+}
+
+class FabricaAndroid implements FabricaUI {
+    public Boton crearBoton() { return new BotonAndroid(); }
+    public TarjetaPropiedad crearTarjetaPropiedad() { return new TarjetaAndroid(); }
+    public FormularioReserva crearFormularioReserva() { return new FormularioAndroid(); }
+}
+
+// Cliente
+
+class Cliente {
+    private final Boton boton;
+    private final TarjetaPropiedad tarjeta;
+    private final FormularioReserva formulario;
+
+    private final FabricaUI fabrica;
+
+    Cliente(FabricaUI fabrica) {
+        this.boton = fabrica.crearBoton();
+        this.tarjeta = fabrica.crearTarjetaPropiedad();
+        this.formulario = fabrica.crearFormularioReserva();
+        this.fabrica = fabrica;
+    }
+
+    String obtenerVista() {
+        return tarjeta.render() + "\n" + formulario.render() + "\n" + boton.render();
+    }
+
+    @Override
+    public String toString() {
+        if (fabrica instanceof FabricaWeb) {
+            return "WEB";
+        } else if (fabrica instanceof FabricaIOS) {
+            return "IOS";
+        } else if (fabrica instanceof FabricaAndroid) {
+            return "ANDROID";
+        }
+
+        return "DESCONOCIDO";
+    }
+}
+
+// Main
+
+class AbstractFactory {
+    public static void main(String[] args) {
+        Cliente clienteWEB = new Cliente(new FabricaWeb());
+        Cliente clienteIOS = new Cliente(new FabricaIOS());
+        Cliente clienteAndroid = new Cliente(new FabricaAndroid());
+
+        Cliente[] clientes = {clienteWEB, clienteIOS, clienteAndroid};
+
+        for (Cliente cliente : clientes) {
+            System.out.println(cliente);
+            System.out.println(cliente.obtenerVista());
+            System.out.println();
+        }
+    }
+}

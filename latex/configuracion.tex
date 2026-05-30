@@ -10,6 +10,9 @@
 \setlength{\parindent}{0.5cm}
 \setlength{\parskip}{6pt}
 
+\setlength{\headheight}{14.5pt}
+\addtolength{\topmargin}{-2.5pt}
+
 % --- Encabezados -------------------------------------------------------------
 \pagestyle{fancy}
 \fancyhf{}
@@ -22,22 +25,80 @@
 \renewcommand{\headrulewidth}{0.4pt}
 
 % --- Estilo de código --------------------------------------------------------
-\lstset{
+\lstdefinestyle{estilo-salida}{
   basicstyle       = \ttfamily\small,
-  keywordstyle     = \color{NavyBlue}\bfseries,
-  commentstyle     = \color{gray}\itshape,
-  stringstyle      = \color{Maroon},
-  numbers          = left,
-  numberstyle      = \tiny\color{gray},
-  numbersep        = 8pt,
-  breaklines       = true,
+  backgroundcolor  = \color{gray!8},
   frame            = single,
   framerule        = 0.5pt,
   rulecolor        = \color{gray!40},
-  backgroundcolor  = \color{gray!5},
+  breaklines       = true,
   showstringspaces = false,
-  tabsize          = 4,
-  captionpos       = b
+  numbers          = none,
+  keywordstyle     = {},
+  commentstyle     = {},
+  stringstyle      = {},
+  identifierstyle  = {}
+}
+
+\lstnewenvironment{salida}{%
+  \lstset{style=estilo-salida}%
+}{}
+
+% --- Estilo de código con minted (optimizado para Java) ----------------------
+
+\newcommand{\code}[1]{%
+  \mintinline[bgcolor=gray!10, fontsize=\small]{java}{#1}%
+}
+
+% --- Entorno flotante con caja  →  \begin{codigof}{Título} ------------------
+\newtcblisting{codigof}[1]{
+  listing only,           % ← muestra solo el código, sin panel inferior
+  listing engine  = minted,
+  minted language = java,
+  minted options  = {
+    style      = vs,
+    linenos    = true,
+    numbersep  = 6pt,
+    breaklines = true,
+    tabsize    = 4,
+    fontsize   = \small
+  },
+  title      = {#1},
+  enhanced,
+  breakable,
+  colback    = gray!4,
+  colframe   = NavyBlue!60,
+  arc        = 4pt,
+  leftrule   = 3pt,
+  rightrule  = 0.5pt,
+  toprule    = 0.5pt,
+  bottomrule = 0.5pt,
+  fontupper  = \small
+}
+
+% --- Entorno simple sin flotante  →  \begin{codigos} ------------------------
+\newtcblisting{codigos}{
+  listing only,           % ← ídem
+  listing engine  = minted,
+  minted language = java,
+  minted options  = {
+    style      = vs,
+    linenos    = true,
+    numbersep  = 6pt,
+    breaklines = true,
+    tabsize    = 4,
+    fontsize   = \small
+  },
+  enhanced,
+  breakable,
+  colback    = gray!4,
+  colframe   = NavyBlue!40,
+  arc        = 4pt,
+  leftrule   = 3pt,
+  rightrule  = 0.5pt,
+  toprule    = 0.5pt,
+  bottomrule = 0.5pt,
+  fontupper  = \small
 }
 
 % --- Títulos -----------------------------------------------------------------

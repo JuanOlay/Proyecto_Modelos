@@ -1,0 +1,103 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Visitor",
+      "request": "launch",
+      "mainClass": "behavioral.visitor.Visitor",
+      "projectName": "design-patterns"
+    },
+    {
+      "type": "java",
+      "name": "Proxy",
+      "request": "launch",
+      "mainClass": "structural.proxy.Proxy",
+      "projectName": "design-patterns"
+    },
+    {
+      "type": "java",
+      "name": "Flyweight",
+      "request": "launch",
+      "mainClass": "structural.flyweight.Flyweight",
+      "projectName": "design-patterns"
+    },
+    {
+      "type": "java",
+      "name": "Facade",
+      "request": "launch",
+      "mainClass": "structural.facade.Facade",
+      "projectName": "design-patterns"
+    },
+    {
+      "type": "java",
+      "name": "Decorator",
+      "request": "launch",
+      "mainClass": "structural.decorator.Decorator",
+      "projectName": "design-patterns"
+    },
+    {
+      "type": "java",
+      "name": "Composite",
+      "request": "launch",
+      "mainClass": "structural.composite.Composite",
+      "projectName": "design-patterns"
+    },
+    {
+      "type": "java",
+      "name": "Adapter",
+      "request": "launch",
+      "mainClass": "structural.adapter.Adapter",
+      "projectName": "design-patterns"
+    },
+    {
+      "type": "java",
+      "name": "Singleton",
+      "request": "launch",
+      "mainClass": "creational.singleton.Singleton",
+      "projectName": "design-patterns"
+    },
+    {
+      "type": "java",
+      "name": "FactoryMethod",
+      "request": "launch",
+      "mainClass": "creational.factorymethod.FactoryMethod",
+      "projectName": "design-patterns"
+    },
+    {
+      "type": "java",
+      "name": "Prototype",
+      "request": "launch",
+      "mainClass": "creational.prototype.Prototype",
+      "projectName": "design-patterns"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "creational.builder.Main",
+      "projectName": "design-patterns"
+    },
+    {
+      "type": "java",
+      "name": "Builder",
+      "request": "launch",
+      "mainClass": "creational.builder.Builder",
+      "projectName": "design-patterns"
+    },
+    {
+      "type": "java",
+      "name": "AbstractFactory",
+      "request": "launch",
+      "mainClass": "creational.abstractfactory.AbstractFactory",
+      "projectName": "design-patterns"
+    },
+    {
+      "type": "java",
+      "name": "Chain of Responsibility",
+      "request": "launch",
+      "mainClass": "behavioral.chainofresponsability.ChainOfResponsability",
+      "projectName": "design-patterns"
+    }
+  ]
+}

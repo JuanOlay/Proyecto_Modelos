@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.design-patterns</groupId>
+    <artifactId>design-patterns</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>23</maven.compiler.source>
+        <maven.compiler.target>23</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>23</source>
+                    <target>23</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+
+                <executions>
+
+                    <!-- ========================= -->
+                    <!-- Creational Patterns       -->
+                    <!-- ========================= -->
+
+                    <execution>
+                        <id>abstract-factory</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                creational.abstractfactory.AbstractFactory
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>builder</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                creational.builder.Builder
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>factory-method</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                creational.factorymethod.FactoryMethod
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>prototype</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                creational.prototype.Prototype
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>singleton</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                creational.singleton.Singleton
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <!-- ========================= -->
+                    <!-- Structural Patterns       -->
+                    <!-- ========================= -->
+
+                    <execution>
+                        <id>adapter</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                structural.adapter.Adapter
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>bridge</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                structural.bridge.Bridge
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>composite</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                structural.composite.Composite
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>decorator</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                structural.decorator.Decorator
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>facade</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                structural.facade.Facade
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>flyweight</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                structural.flyweight.Flyweight
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>proxy</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                structural.proxy.Proxy
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <!-- ========================= -->
+                    <!-- Behavioral Patterns       -->
+                    <!-- ========================= -->
+
+                    <execution>
+                        <id>chain-of-responsibility</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                behavioral.chainofresponsability.ChainOfResponsability
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>command</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                behavioral.command.Command
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>interpreter</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                behavioral.interpreter.Interpreter
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>iterator</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                behavioral.iterator.Iterator
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>mediator</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                behavioral.mediator.Mediator
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>memento</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                behavioral.memento.Memento
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>observer</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                behavioral.observer.Observer
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>state</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                behavioral.state.State
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>strategy</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                behavioral.strategy.Strategy
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>template-method</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                behavioral.templatemethod.TemplateMethod
+                            </mainClass>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>visitor</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                behavioral.visitor.Visitor
+                            </mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

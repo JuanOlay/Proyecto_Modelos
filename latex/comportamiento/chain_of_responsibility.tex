@@ -4,8 +4,6 @@
 
 \chapter{Chain Of Responsibility}
 
-\patroninfo{Comportamiento}{223}
-
 % ─── Situación Problema ──────────────────────────────────────────────────────
 \section{Situación Problema}
 
@@ -51,9 +49,11 @@ discriminatorios--- se reduce a insertar un nuevo manejador en la cadena
 en el punto que corresponda, sin tocar ninguno de los existentes.
 
 % ─── Diagrama de clases ─────────────────────────────────────────────────────
+\section{Diagrama de clases}
+
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{imagenes/chain_responsibility_diagrama.png}
+    \includegraphics[width=\textwidth]{comportamiento/img/uml_behavioral_patterns.chain_of_responsability.png}
     \caption{Diagrama de clases del patrón Chain of Responsibility}
 \end{figure}
 
@@ -75,17 +75,76 @@ en el punto que corresponda, sin tocar ninguno de los existentes.
 
 % Explicar qué realiza el programa principal
 
-\begin{lstlisting}[language=Java, caption=Main]
- //Codigo del main
-\end{lstlisting}
+\begin{codigof}{ChainOfResponsability}
+// ChainOfResponsability
+package behavioral.chainofresponsability;
+
+import java.util.List;
+
+class ChainOfResponsability {
+    public static void main(String[] args) {
+        Cliente cliente = new Cliente();
+
+        Anuncio[] anuncios = {
+                new Anuncio("Apartamento en el centro historico",
+                        List.of(new Foto(1920, 1080), new Foto(1280, 960), new Foto(1600, 900)),
+                        "Precioso apartamento con todas las comodidades. Ideal para parejas.",
+                        80.0, "LIC-2024-BCN-00412"),
+                new Anuncio("Estudio acogedor",
+                        List.of(new Foto(1920, 1080)),
+                        "Estudio luminoso en zona tranquila.",
+                        60.0, "LIC-2024-BCN-00999"),
+                new Anuncio("Piso moderno",
+                        List.of(new Foto(1920, 1080), new Foto(1280, 960), new Foto(1600, 900)),
+                        "Piso muy bonito. Contactame por whatsapp para mas info.",
+                        90.0, "LIC-2024-BCN-00300"),
+                new Anuncio("Villa con piscina",
+                        List.of(new Foto(1920, 1080), new Foto(1280, 960), new Foto(1600, 900)),
+                        "Impresionante villa con jardin y piscina privada.",
+                        200.0, "")
+        };
+
+        System.out.println("VERIFICACION DE ANUNCIOS AIRBNB\n");
+
+        for (Anuncio anuncio : anuncios) {
+            ResultadoVerificacion resultado = cliente.procesar(anuncio);
+            mostrarResultado(anuncio, resultado);
+        }
+    }
+
+    private static void mostrarResultado(Anuncio anuncio, ResultadoVerificacion resultado) {
+        System.out.println("Anuncio : " + anuncio.getTitulo());
+        System.out.println("Estado  : " + (resultado.isAprobado() ? "APROBADO" : "RECHAZADO"));
+        System.out.println("Motivo  : " + resultado.getMotivo());
+        System.out.println("-".repeat(55));
+    }
+}
+\end{codigof}
 
 
 % ─── Salida del Main ────────────────────────────────────────────────────────
 \section{Salida del Main}
 
-\begin{lstlisting}[caption=Salida]
- // Salida esperada
-\end{lstlisting}
+\begin{salida}
+VERIFICACION DE ANUNCIOS AIRBNB
+
+Anuncio : Apartamento en el centro historico
+Estado  : APROBADO
+Motivo  : Anuncio aprobado para publicacion.
+-------------------------------------------------------
+Anuncio : Estudio acogedor
+Estado  : RECHAZADO
+Motivo  : Se requieren al menos 3 fotografias.
+-------------------------------------------------------
+Anuncio : Piso moderno
+Estado  : RECHAZADO
+Motivo  : La descripcion contiene informacion de contacto no permitida.
+-------------------------------------------------------
+Anuncio : Villa con piscina
+Estado  : RECHAZADO
+Motivo  : Se requiere un numero de licencia turistica valido para publicar en esta ciudad.
+-------------------------------------------------------
+\end{salida}
 
 
 % ─── Clases ─────────────────────────────────────────────────────────────────
@@ -94,25 +153,25 @@ en el punto que corresponda, sin tocar ninguno de los existentes.
 % ─── Clase 1 ────────────────────────────────────────────────────────────────
 \subsection{NombreClase}
 
-\begin{lstlisting}[language=Java, caption=NombreClase]
+\begin{codigof}{Main.java}
  
-\end{lstlisting}
+\end{codigof}
 
 
 % ─── Clase 2 ────────────────────────────────────────────────────────────────
 \subsection{NombreClase}
 
-\begin{lstlisting}[language=Java, caption=NombreClase]
+\begin{codigof}{Main.java}
  
-\end{lstlisting}
+\end{codigof}
 
 
 % ─── Clase 3 ────────────────────────────────────────────────────────────────
 \subsection{NombreClase}
 
-\begin{lstlisting}[language=Java, caption=NombreClase]
+\begin{codigof}{Main.java}
  
-\end{lstlisting}
+\end{codigof}
 
 
 % ─── Conclusiones ───────────────────────────────────────────────────────────

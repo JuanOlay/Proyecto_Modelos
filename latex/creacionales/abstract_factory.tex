@@ -4,8 +4,6 @@
 
 \chapter{Abstract Factory}
 
-\patroninfo{Creacional}{87}
-
 % ─── Situación Problema ──────────────────────────────────────────────────────
 \section{Situación Problema}
 
@@ -56,86 +54,223 @@ nuevas superficies simplemente añadiendo una nueva fábrica concreta.
 % Explicar la responsabilidad de cada clase/interfaz
 
 \begin{itemize}
-    \item \textbf{AbstractFactory:}
-    \item \textbf{ConcreteFactory:}
-    \item \textbf{AbstractProduct:}
-    \item \textbf{ConcreteProduct:}
-    \item \textbf{Client:}
+    \item \textbf{AbstractFactory:}  
+    La interfaz \texttt{FabricaUI} define los métodos necesarios para crear
+    cada tipo de componente de la interfaz gráfica. Su objetivo es garantizar
+    que el cliente pueda trabajar con familias completas de productos sin
+    depender de implementaciones concretas.
+
+    \item \textbf{ConcreteFactory:}  
+    Las clases \texttt{FabricaWeb}, \texttt{FabricaIOS} y
+    \texttt{FabricaAndroid} implementan la interfaz \texttt{FabricaUI} y se
+    encargan de crear productos compatibles entre sí según la plataforma
+    correspondiente. Cada fábrica representa una familia completa de
+    componentes visuales.
+
+    \item \textbf{AbstractProduct:}  
+    Las interfaces \texttt{Boton}, \texttt{TarjetaPropiedad} y
+    \texttt{FormularioReserva} definen el comportamiento común que deben
+    cumplir todos los productos de una misma categoría, independientemente
+    de la plataforma donde se utilicen.
+
+\begin{itemize}
+    \item \textbf{AbstractFactory:}  
+    La interfaz \texttt{FabricaUI} define los métodos necesarios para crear
+    las diferentes familias de componentes gráficos sin depender de clases
+    concretas.
+
+    \item \textbf{ConcreteFactory:}  
+    Las clases \texttt{FabricaWeb}, \texttt{FabricaIOS} y
+    \texttt{FabricaAndroid} implementan la fábrica abstracta y crean
+    componentes compatibles con cada plataforma específica.
+
+    \item \textbf{AbstractProduct:}  
+    Las interfaces \texttt{Boton}, \texttt{TarjetaPropiedad} y
+    \texttt{FormularioReserva} definen el comportamiento común de los
+    productos de la interfaz.
+
+    \item \textbf{ConcreteProduct:}  
+    Las clases \texttt{BotonWeb}, \texttt{TarjetaWeb},
+    \texttt{FormularioWeb}, \texttt{BotonIOS}, \texttt{TarjetaIOS},
+    \texttt{FormularioIOS}, \texttt{BotonAndroid},
+    \texttt{TarjetaAndroid} y \texttt{FormularioAndroid} representan los
+    productos concretos de cada plataforma.
+
+    \item \textbf{Client:}  
+    La clase \texttt{Cliente} utiliza únicamente la interfaz
+    \texttt{FabricaUI} para obtener los componentes necesarios. El cliente no
+    conoce las clases concretas que instancia, lo que permite cambiar de
+    plataforma sin modificar la lógica principal de la aplicación.
 \end{itemize}
 
 
 % ─── Main ───────────────────────────────────────────────────────────────────
 \section{Main}
 
-% Explicar qué realiza el programa principal
-
-\begin{lstlisting}[language=Java, caption=Ejemplo de clase Java]
-public class Usuario {
-
-    private String nombre;
-    private int edad;
-
-    public Usuario(String nombre, int edad) {
-        this.nombre = nombre;
-        this.edad = edad;
-    }
-
-    public void mostrarInformacion() {
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Edad: " + edad);
-    }
-
+\begin{codigof}{AbtractFactory.java}
+class AbstractFactory {
     public static void main(String[] args) {
+        Cliente clienteWEB = new Cliente(new FabricaWeb());
+        Cliente clienteIOS = new Cliente(new FabricaIOS());
+        Cliente clienteAndroid = new Cliente(new FabricaAndroid());
 
-        Usuario usuario = new Usuario("Carlos", 25);
+        Cliente[] clientes = {clienteWEB, clienteIOS, clienteAndroid};
 
-        usuario.mostrarInformacion();
+        for (Cliente cliente : clientes) {
+            System.out.println(cliente);
+            System.out.println(cliente.obtenerVista());
+            System.out.println();
+        }
     }
 }
-\end{lstlisting}
+
+\end{codigof}
 
 
 % ─── Salida del Main ────────────────────────────────────────────────────────
 \section{Salida del Main}
 
-\begin{lstlisting}[language=Java, caption=NombreClase]
- 
-\end{lstlisting}
+\begin{salida}
+WEB
+Tarjeta Web
+Formulario Web
+Boton Web
+
+IOS
+Tarjeta iOS
+Formulario iOS
+Boton iOS
+
+ANDROID
+Tarjeta Android
+Formulario Android
+Boton Android
+\end{salida}
 
 
 % ─── Clases ─────────────────────────────────────────────────────────────────
 \section{Clases}
 
-% ─── Clase 1 ────────────────────────────────────────────────────────────────
-\subsection{NombreClase}
+\begin{codigof}{Abstract Products}
+interface Boton {
+    String render();
+}
 
-\begin{lstlisting}[language=Java, caption=NombreClase]
- 
-\end{lstlisting}
+interface TarjetaPropiedad {
+    String render();
+}
 
+interface FormularioReserva {
+    String render();
+}
+\end{codigof}
 
-% ─── Clase 2 ────────────────────────────────────────────────────────────────
-\subsection{NombreClase}
+\begin{codigof}{Abstract Factory}
+ interface FabricaUI {
+    Boton crearBoton();
+    TarjetaPropiedad crearTarjetaPropiedad();
+    FormularioReserva crearFormularioReserva();
+}
+\end{codigof}
 
-\begin{lstlisting}[language=Java, caption=NombreClase]
- 
-\end{lstlisting}
+\begin{codigof}{Concrete Products}
+// Familia Web
+class BotonWeb implements Boton {
+    public String render() { return "Boton Web"; }
+}
+class TarjetaWeb implements TarjetaPropiedad {
+    public String render() { return "Tarjeta Web"; }
+}
+class FormularioWeb implements FormularioReserva {
+    public String render() { return "Formulario Web"; }
+}
 
+// Familia iOS
+class BotonIOS implements Boton {
+    public String render() { return "Boton iOS"; }
+}
+class TarjetaIOS implements TarjetaPropiedad {
+    public String render() { return "Tarjeta iOS"; }
+}
+class FormularioIOS implements FormularioReserva {
+    public String render() { return "Formulario iOS"; }
+}
 
-% ─── Clase 3 ────────────────────────────────────────────────────────────────
-\subsection{NombreClase}
+// Familia Android
+class BotonAndroid implements Boton {
+    public String render() { return "Boton Android"; }
+}
+class TarjetaAndroid implements TarjetaPropiedad {
+    public String render() { return "Tarjeta Android"; }
+}
+class FormularioAndroid implements FormularioReserva {
+    public String render() { return "Formulario Android"; }
+}
+\end{codigof}
 
-\begin{lstlisting}[language=Java, caption=NombreClase]
- 
-\end{lstlisting}
+\begin{codigof}{Concrete Factories}
+class FabricaWeb implements FabricaUI {
+    public Boton crearBoton() { return new BotonWeb(); }
+    public TarjetaPropiedad crearTarjetaPropiedad() { return new TarjetaWeb(); }
+    public FormularioReserva crearFormularioReserva() { return new FormularioWeb(); }
+}
 
+class FabricaIOS implements FabricaUI {
+    public Boton crearBoton() { return new BotonIOS(); }
+    public TarjetaPropiedad crearTarjetaPropiedad() { return new TarjetaIOS(); }
+    public FormularioReserva crearFormularioReserva() { return new FormularioIOS(); }
+}
+
+class FabricaAndroid implements FabricaUI {
+    public Boton crearBoton() { return new BotonAndroid(); }
+    public TarjetaPropiedad crearTarjetaPropiedad() { return new TarjetaAndroid(); }
+    public FormularioReserva crearFormularioReserva() { return new FormularioAndroid(); }
+}
+\end{codigof}
+
+\begin{codigof}{Client}
+class Cliente {
+    private final Boton boton;
+    private final TarjetaPropiedad tarjeta;
+    private final FormularioReserva formulario;
+
+    private final FabricaUI fabrica;
+
+    Cliente(FabricaUI fabrica) {
+        this.boton = fabrica.crearBoton();
+        this.tarjeta = fabrica.crearTarjetaPropiedad();
+        this.formulario = fabrica.crearFormularioReserva();
+        this.fabrica = fabrica;
+    }
+
+    String obtenerVista() {
+        return tarjeta.render() + "\n" + formulario.render() + "\n" + boton.render();
+    }
+
+    @Override
+    public String toString() {
+        if (fabrica instanceof FabricaWeb) {
+            return "WEB";
+        } else if (fabrica instanceof FabricaIOS) {
+            return "IOS";
+        } else if (fabrica instanceof FabricaAndroid) {
+            return "ANDROID";
+        }
+
+        return "DESCONOCIDO";
+    }
+}
+\end{codigof}
 
 % ─── Conclusiones ───────────────────────────────────────────────────────────
 \section{Conclusiones}
 
-% Explicar:
-% - Ventajas del patrón
-% - Cuándo usarlo
-% - Beneficios obtenidos
-% - Posibles desventajas
-% - Relación con principios SOLID
+El patrón \textit{Abstract Factory} permite crear familias de objetos
+relacionados manteniendo coherencia entre sus componentes. En este caso,
+facilita la creación de interfaces específicas para Web, iOS y Android sin
+mezclar la lógica de negocio con detalles de implementación visual.
+
+Además, reduce el acoplamiento entre el cliente y las clases concretas,
+permitiendo agregar nuevas plataformas de manera más sencilla. Sin
+embargo, puede incrementar la cantidad de clases del sistema y hacer más
+compleja la estructura inicial del proyecto.

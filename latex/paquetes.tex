@@ -1,15 +1,16 @@
 % ─────────────────────────────────────────────────────────────────────────────
-%  paquetes.tex  —  Versión optimizada para Overleaf
+%  paquetes.tex
 % ─────────────────────────────────────────────────────────────────────────────
 
 % --- Codificación y lenguaje ------------------------------------------------
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
+\usepackage{pmboxdraw}          % caracteres Unicode de caja (─ │ └ etc.)
 
 % --- Tipografía --------------------------------------------------------------
 \usepackage{lmodern}
-\usepackage{microtype}
+\usepackage[patch=none]{microtype}   % "patch=none" evita el warning de footnote
 
 % --- Geometría ---------------------------------------------------------------
 \usepackage[
@@ -24,13 +25,11 @@
 \usepackage{graphicx}
 \usepackage{float}
 
-% ELIMINADO:
-% \usepackage{tikz}
-% \usetikzlibrary{...}
-
 % --- Código ------------------------------------------------------------------
-\usepackage{listings}
-
+\usepackage{listings}           % ← mantenido, varios archivos aún lo usan
+\usepackage{minted}
+\usepackage{tcolorbox}
+\tcbuselibrary{minted, skins, breakable}
 
 % --- Matemáticas -------------------------------------------------------------
 \usepackage{amsmath}
@@ -42,23 +41,23 @@
 \usepackage{longtable}
 \usepackage{multirow}
 
-% --- Hipervínculos -----------------------------------------------------------
+% --- Utilidades --------------------------------------------------------------
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{csquotes}
+\usepackage{chngcntr}
+\usepackage{tocbibind}          % ← ANTES de hyperref (evita conflicto \@BOOKMARK)
+
+% --- Encabezados -------------------------------------------------------------
+\usepackage{fancyhdr}
+\setlength{\headheight}{13.6pt}     % ← fix warning de fancyhdr
+\addtolength{\topmargin}{-1.6pt}
+
+% --- Hipervínculos (SIEMPRE al final) ----------------------------------------
 \usepackage[
   colorlinks=true,
   linkcolor=NavyBlue,
   citecolor=teal,
   urlcolor=RoyalBlue
 ]{hyperref}
-
-% --- Encabezados -------------------------------------------------------------
-\usepackage{fancyhdr}
-
-% --- Utilidades --------------------------------------------------------------
-\usepackage{enumitem}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{csquotes}
-\usepackage{tocbibind}
-
-% Solo necesario si usas \counterwithout
-\usepackage{chngcntr}

@@ -1,0 +1,31 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "maven: build",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["clean", "package"],
+      "group": {
+      "kind": "build"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "Clean artifacts",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["clean"]
+    },
+    {
+      "label": "Run tests",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["test"],
+      "group": "test"
+    }
+  ]
+}
